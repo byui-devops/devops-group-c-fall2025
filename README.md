@@ -44,7 +44,7 @@ PORT=5000
 frontend/.env
 
 ```bash
-REACT_APP_API_URL=http://localhost:5000
+REACT_APP_BACKEND_URL=http://localhost:5000
 ```
 
 !! Do not commit .env files to GitHub! !!
