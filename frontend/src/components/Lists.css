@@ -1,0 +1,176 @@
+.lists-container {
+  margin-top: 24px;
+}
+
+.lists-header {
+  margin-bottom: 20px;
+}
+
+.create-list-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.create-list-form .input {
+  flex: 1;
+  max-width: 300px;
+}
+
+.lists-board {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  align-items: flex-start;
+}
+
+.list-column {
+  background: var(--light-bg);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.list-header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border-gray);
+}
+
+.list-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.list-header h4 {
+  color: var(--dark-slate);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list-count {
+  background: var(--white);
+  color: var(--medium-slate);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.list-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--medium-slate);
+}
+
+.list-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: var(--border-gray);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.list-progress-fill {
+  height: 100%;
+  background: var(--success-green);
+  transition: width 0.3s ease;
+}
+
+.list-progress-text {
+  font-weight: 600;
+  min-width: 35px;
+  text-align: right;
+}
+
+.list-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+  min-height: 50px;
+}
+
+.add-card-button {
+  background: transparent;
+  border: 2px dashed var(--border-gray);
+  color: var(--medium-slate);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+.add-card-button:hover {
+  background: var(--white);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.add-card-button::before {
+  content: "+ ";
+}
+
+/* Add list button */
+.add-list-column {
+  background: var(--white);
+  border: 2px dashed var(--border-gray);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  min-width: 280px;
+  max-width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--medium-slate);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.add-list-column:hover {
+  background: var(--light-hover);
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.add-list-column::before {
+  content: "+";
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+/* Empty state for lists */
+.lists-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--medium-slate);
+}
+
+.lists-empty h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--dark-slate);
+}
