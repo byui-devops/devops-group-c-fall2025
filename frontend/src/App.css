@@ -1,38 +1,111 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
+  background-color: var(--light-bg);
+}
+
+.app-header {
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 24px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.App-link {
-  color: #61dafb;
+.app-header h1 {
+  color: var(--dark-slate);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-content {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Shared button styles */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--hover-blue);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--medium-slate);
+  border: 2px solid var(--border-gray);
+}
+
+.btn-secondary:hover {
+  background: var(--light-hover);
+  border-color: var(--medium-slate);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Shared input styles */
+.input {
+  padding: 10px 16px;
+  border: 2px solid var(--border-gray);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
+  background: var(--white);
+  color: var(--dark-slate);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.input::placeholder {
+  color: #8993a4;
+}
+
+/* Loading and empty states */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--medium-slate);
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--dark-slate);
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin: 0 0 24px 0;
 }

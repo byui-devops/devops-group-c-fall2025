@@ -10,6 +10,7 @@ module.exports = (supabase) => {
       const { data, error } = await supabase.auth.admin.createUser({
         email,
         password,
+        email_confirm: true,  // Changed from True to true
       });
       if (error) return res.status(400).json({ error: error.message });
       res.json(data.user);
