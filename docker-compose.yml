@@ -1,18 +1,16 @@
-version: "3.9"
-
 services:
-  frontend:
-    build:
-      context: ./frontend
-    image: shawnjensen/devops-group-c-fall2025-frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-
   backend:
-    build:
-      context: ./backend
-    image: shawnjensen/devops-group-c-fall2025-backend
+    build: ./backend
     ports:
-      - "3000:3000"
+      - "5000:5000"
+    environment:
+      - SUPABASE_URL=$https://juoujhavjimotsacrbjj.supabase.co
+      - SUPABASE_KEY=$sb_secret_a1WDOXI2EHt5xGznZk0CNQ_axIC02fg
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    environment:
+      - HTTPS=${HTTPS}
+      - SB_PUBLISHABLE_KEY=$sb_publishable_HqIWIWJu_gEE6Su-TdEd2Q_d_nCcQLR
