@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    image: shawnjensen/devops-group-c-fall2025-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+    image: shawnjensen/devops-group-c-fall2025-backend
+    ports:
+      - "3000:3000"
