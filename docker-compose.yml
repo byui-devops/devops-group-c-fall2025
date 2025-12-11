@@ -1,16 +1,21 @@
 services:
   backend:
-    build: ./backend
+    image: shawnjensen/devops-group-c-fall2025-backend:latest
     ports:
       - "5000:5000"
     environment:
-      - SUPABASE_URL=$https://juoujhavjimotsacrbjj.supabase.co
-      - SUPABASE_KEY=$sb_secret_a1WDOXI2EHt5xGznZk0CNQ_axIC02fg
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - PORT=5000
+      - HOST=0.0.0.0
 
   frontend:
-    build: ./frontend
+    image: shawnjensen/devops-group-c-fall2025-frontend:latest
     ports:
-      - "3000:80"
+      - "3000:3000"
     environment:
-      - HTTPS=${HTTPS}
-      - SB_PUBLISHABLE_KEY=$sb_publishable_HqIWIWJu_gEE6Su-TdEd2Q_d_nCcQLR
+      - HOST=0.0.0.0
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+    depends_on:
+      - backend
