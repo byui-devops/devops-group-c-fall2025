@@ -9,14 +9,12 @@ You can use docker, or you can run it locally.
 
 # Running through docker
 
-## If you're running the applicaiton
-1. Download the docker images
+## If you're running the application on a server
 
-    docker pull shawnjensen/devops-group-c-fall2025-frontend:latest
+    git checkout main
+    git pull
+    docker pull shawnjensen/devops-group-c-fall2025-frontend:latest 
     docker pull shawnjensen/devops-group-c-fall2025-backend:latest
-
-2. From the root directory of the application, start docker compose
-
     docker-compose up
 
 
