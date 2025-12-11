@@ -9,16 +9,16 @@ echo "Starting user data script..."
 
 # Update system
 echo "Updating system packages..."
-yum update -y
+apt-get update -y
 
 # Install Docker
 echo "Installing Docker..."
-yum install -y docker
+apt-get install -y docker.io
 systemctl start docker
 systemctl enable docker
 
-# Add ec2-user to docker group
-usermod -a -G docker ec2-user
+# Add ubuntu user to docker group
+usermod -a -G docker ubuntu
 
 # Install Docker Compose
 echo "Installing Docker Compose..."
@@ -32,16 +32,16 @@ docker-compose --version
 
 # Install Git
 echo "Installing Git..."
-yum install -y git
+apt-get install -y git
 
 # Create application directory
 echo "Setting up application directory..."
-mkdir -p /home/ec2-user/app
-cd /home/ec2-user/app
+mkdir -p /home/ubuntu/app
+cd /home/ubuntu/app
 
 # Clone the repository (assuming it's public)
 echo "Cloning repository..."
-git clone https://github.com/shawnjensen/devops-group-c-fall2025.git .
+git clone https://github.com/byui-devops/devops-group-c-fall2025.git .
 
 # Create .env file with secrets
 echo "Creating .env file with environment variables..."
@@ -51,8 +51,39 @@ SUPABASE_KEY=${supabase_key}
 PORT=${port}
 EOF
 
+# Create nginx configuration file
+echo "Creating nginx configuration..."
+cat > nginx.conf << 'NGINX_EOF'
+server {
+    listen 80;
+    server_name _;
+
+    # Serve frontend
+    location / {
+        proxy_pass http://frontend:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Proxy API requests to backend
+    location /api/ {
+        proxy_pass http://backend:5000/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+NGINX_EOF
+
 # Set proper permissions
-chown -R ec2-user:ec2-user /home/ec2-user/app
+chown -R ubuntu:ubuntu /home/ubuntu/app
 chmod 600 .env
 
 # Pull Docker images

@@ -43,7 +43,7 @@ resource "aws_security_group" "kanban_sg" {
     description = "Allow backend traffic"
   }
 
-  # Allow SSH (optional - for debugging)
+  # Allow SSH (for AWS console remote connection)
   ingress {
     from_port   = 22
     to_port     = 22
@@ -68,7 +68,7 @@ resource "aws_security_group" "kanban_sg" {
 
 # EC2 Instance
 resource "aws_instance" "kanban_app" {
-  ami           = "ami-05134c8ef96964280"  # Amazon Linux 2023 in us-west-2
+  ami           = "ami-05134c8ef96964280"  # Ubuntu 22.04 LTS in us-west-2
   instance_type = "t2.micro"
 
   vpc_security_group_ids = [aws_security_group.kanban_sg.id]
