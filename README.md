@@ -3,8 +3,39 @@
 This guide explains how to set up and run the Kanban Skeleton App locally.  
 It includes both the frontend (React) and backend (Express) with Supabase authentication and database.
 
+You can use docker, or you can run it locally.
+
 ---
 
+# Running through docker
+
+## If you're running the applicaiton
+1. Download the docker images
+
+    docker pull shawnjensen/devops-group-c-fall2025-frontend:latest
+    docker pull shawnjensen/devops-group-c-fall2025-backend:latest
+
+2. From the root directory of the application, start docker compose
+
+    docker-compose up
+
+
+
+## If you're developing the application, run the following to build and push the updates.
+(Build backend)
+    docker build -t shawnjensen/devops-group-c-fall2025-backend:latest ./backend
+
+(Build frontend)
+    docker build -t shawnjensen/devops-group-c-fall2025-frontend:latest ./frontend
+
+(Push backend)
+    docker push shawnjensen/devops-group-c-fall2025-backend:latest
+
+(Push frontend)
+    docker push shawnjensen/devops-group-c-fall2025-frontend:latest
+
+
+# Running Locally
 ## 1. Prerequisites
 
 Before you begin, ensure you have the following installed:
