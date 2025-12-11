@@ -62,7 +62,8 @@ PORT=5000
 
 ## 4. Create .env files
 
-backend/.env
+// Root directory
+/.env
 
 ```bash
 SUPABASE_URL=<YOUR_SUPABASE_URL>
