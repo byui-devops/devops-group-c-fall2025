@@ -11,6 +11,8 @@ You can use docker, or you can run it locally.
 
 ## If you're running the application on a server
 
+    git clone <...>
+    <create the environment files - shown below>
     git checkout main
     git pull
     docker pull shawnjensen/devops-group-c-fall2025-frontend:latest 
@@ -20,17 +22,19 @@ You can use docker, or you can run it locally.
 
 
 ## If you're developing the application, run the following to build and push the updates.
-(Build backend)
+    
+    (Build backend)
     docker build -t shawnjensen/devops-group-c-fall2025-backend:latest ./backend
 
-(Build frontend)
+    (Build frontend)
     docker build -t shawnjensen/devops-group-c-fall2025-frontend:latest ./frontend
 
-(Push backend)
+    (Push backend)
     docker push shawnjensen/devops-group-c-fall2025-backend:latest
 
-(Push frontend)
+    (Push frontend)
     docker push shawnjensen/devops-group-c-fall2025-frontend:latest
+
 
 
 # Running Locally
