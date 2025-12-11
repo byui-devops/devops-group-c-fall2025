@@ -7,6 +7,15 @@ You can use docker, or you can run it locally.
 
 ---
 
+
+# Setting up AWS EC2
+
+   1. Update the AWS secrets (has to be done since AWS academy resets keys every few hours)
+   2. Analyze the deployment pipeline's output to obtain the URL for the EC2's public IP
+   3. Navigate to port 80 on the EC2 public IP. *Don't* hit port 3000 for frontend access
+
+
+
 # Running through docker
 
 ## If you're running the application on a server
