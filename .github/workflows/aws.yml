@@ -1,0 +1,54 @@
+name: Deploy Kanban App to AWS
+
+on:
+  # Run when you push to main branch
+  push:
+    branches: [ main ]
+
+  # Also allow manual trigger from Actions tab
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    # All commands run from the iac folder
+    defaults:
+      run:
+        working-directory: iac
+
+    # Use AWS Academy credentials from GitHub Secrets
+    env:
+      AWS_ACCESS_KEY_ID:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_SESSION_TOKEN:     ${{ secrets.AWS_SESSION_TOKEN }}
+      AWS_REGION:            us-west-2
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.0
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: |
+          terraform plan \
+            -var="supabase_url=${{ secrets.SUPABASE_URL }}" \
+            -var="supabase_key=${{ secrets.SUPABASE_KEY }}" \
+            -var="port=${{ secrets.PORT }}"
+
+      - name: Terraform Apply
+        run: |
+          terraform apply --auto-approve \
+            -var="supabase_url=${{ secrets.SUPABASE_URL }}" \
+            -var="supabase_key=${{ secrets.SUPABASE_KEY }}" \
+            -var="port=${{ secrets.PORT }}"
+
+      - name: Output Application URLs
+        run: terraform output
