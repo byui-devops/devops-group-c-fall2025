@@ -13,6 +13,10 @@ You can use docker, or you can run it locally.
 
     git clone <...>
     <create the environment files - shown below>
+
+    or
+
+    
     git checkout main
     git pull
     docker pull shawnjensen/devops-group-c-fall2025-frontend:latest 
