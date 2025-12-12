@@ -96,4 +96,4 @@ echo "Starting application with docker-compose..."
 docker-compose up -d
 
 echo "User data script completed successfully!"
-echo "Application should be running on ports 3000 (frontend) and 5000 (backend)"
+echo "Application should be running on port 3000 (frontend) and 5000 (backend). Access the application on port 80 (reverse proxy)"

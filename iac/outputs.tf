@@ -4,8 +4,8 @@ output "ec2_public_ip" {
 }
 
 output "application_url" {
-  description = "URL to access the application"
-  value       = "http://${aws_instance.kanban_app.public_ip}:3000"
+  description = "URL to access the application (Please wait ~5-8 minutes for the EC2 to fully complete setup)"
+  value       = "http://${aws_instance.kanban_app.public_ip}:80"
 }
 
 output "backend_url" {
