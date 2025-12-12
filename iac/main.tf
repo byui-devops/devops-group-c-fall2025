@@ -1,4 +1,12 @@
 terraform {
+  backend "s3" {
+    bucket = "kanban-app-terraform-state-thomasgardner"
+    key    = "kanban-app/terraform.tfstate"
+    region = "us-west-2"
+  }
+}
+
+terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
