@@ -43,6 +43,15 @@ jobs:
             -var="supabase_key=${{ secrets.SUPABASE_KEY }}" \
             -var="port=${{ secrets.PORT }}"
 
+      - name: Terraform Destroy (Clean Up Old Resources)
+        run: |
+          terraform destroy --auto-approve \
+            -var="supabase_url=${{ secrets.SUPABASE_URL }}" \
+            -var="supabase_key=${{ secrets.SUPABASE_KEY }}" \
+            -var="port=${{ secrets.PORT }}" \
+          || echo "Nothing to destroy"
+        continue-on-error: true
+
       - name: Terraform Apply
         run: |
           terraform apply --auto-approve \
