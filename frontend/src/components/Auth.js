@@ -73,9 +73,13 @@ export default function Auth({ onLogin }) {
 
         <div className="auth-toggle">
           {mode === "login" ? "Don't have an account? " : "Already have an account? "}
+
           <button 
             className="auth-toggle-button"
-            onClick={() => setMode(mode === "login" ? "signup" : "login")}
+            onClick={() => {
+              setMode(mode === "login" ? "signup" : "login");
+              setError("");
+            }}
           >
             {mode === "login" ? "Sign Up" : "Sign In"}
           </button>
